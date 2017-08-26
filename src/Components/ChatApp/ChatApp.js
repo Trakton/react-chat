@@ -33,7 +33,6 @@ class ChatApp extends React.Component {
     const messages = this.state.messages;
     messages.push(message);
     this.setState({ messages });
-    console.log(server);
   }
 
   render() {

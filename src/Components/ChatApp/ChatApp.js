@@ -4,7 +4,7 @@ import Messages from '../Messages/Messages';
 import ChatInput from '../ChatInput/ChatInput';
 import './ChatApp.css'
 
-var server = (process.env.NODE_ENV === 'development')? 'http://localhost:3000' : 'https://luthier-chat-server.herokuapp.com';
+var server = process.env.NODE_ENV === 'production' ? 'https://luthier-chat-server.herokuapp.com' : 'http://localhost:3000'
 
 class ChatApp extends React.Component {
   constructor(props){

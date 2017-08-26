@@ -4,11 +4,13 @@ import Messages from '../Messages/Messages';
 import ChatInput from '../ChatInput/ChatInput';
 import './ChatApp.css'
 
+var server = (process.env.NODE_ENV === 'development')? 'http://localhost:3000' : 'https://luthier-chat-server.herokuapp.com';
+
 class ChatApp extends React.Component {
   constructor(props){
     super(props);
     this.state = { messages: [] };
-    this.socket = io('http://localhost:3000/').connect()
+    this.socket = io(server).connect()
     this.sendHandler = this.sendHandler.bind(this);
     this.addMessage = this.addMessage.bind(this);
     this.socket.on('server:message', message => {

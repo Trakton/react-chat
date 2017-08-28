@@ -1,4 +1,4 @@
-#The React-Chat
+# The React-Chat
 
 This is a simple messenger application built with [express](http://expressjs.com), [react](https://facebook.github.io/react/) and [nodejs](https://nodejs.org/). It implements the client side logic that is able to connect with a web server to broadcast chat messages to other clients.
 

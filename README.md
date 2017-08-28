@@ -21,3 +21,16 @@ Then, when the webserver is listening, you can:
 1. run 'npm start'
 
 This will build a webserver at [localhost:3001](localhost:3001) to serve react files to land the app. You can now open multiple browser pages using the same link and port to connect multiple clients and see how the chat behaves!
+
+
+### Development
+
+This project is part of a personal desire to learn new technologies, and apply them in a real application fully functional and online in production mode. Here is a summary of the technologies learned and included in the app:
+
+* [Express](expressjs.com)
+* [Nodejs](https://nodejs.org)
+* [React](https://facebook.github.io/react/)
+* [React-router](https://github.com/ReactTraining/react-router)
+* [Redux](http://redux.js.org/)
+* [Socket-io](https://socket.io/)
+ 

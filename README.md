@@ -1,10 +1,23 @@
-In order to run this chat, cd into the src/ folder and run:
+#The React-Chat
 
-- Node server.js
-- Npm start
+This is a simple messenger application built with [express](http://expressjs.com), [react](https://facebook.github.io/react/) and [nodejs](https://nodejs.org/). It implements the client side logic that is able to connect with a web server to broadcast chat messages to other clients.
 
-Node will open a server for listening to messagings and broadcasting them to all clients using sockets.
+### Online at Heroku
 
-Npm will start a dev server for react do land.
+You can use the application online, ready for production, at [https://luthier-chat.herokuapp.com](https://luthier-chat.herokuapp.com). Open multiple pages and see the chat in action.
 
-You can open multiple browser windows in the same react localhost:port to chat with multiple users.
+### The React-chat-server
+
+The server side logic of this app is developed at [https://github.com/Trakton/react-chat-server](https://github.com/Trakton/react-chat-server). Check this repository in order to understand the whole application!
+
+### Running in development
+
+To build this application and test it locally, first, get the webserver running by following the tutorial at [https://github.com/Trakton/react-chat-server](https://github.com/Trakton/react-chat-server).
+
+Then, when the webserver is listening, you can:
+
+1. Clone this repository and 'cd' into it
+1. run 'npm install' 
+1. run 'npm start'
+
+This will build a webserver at [localhost:3001](localhost:3001) to serve react files to land the app. You can now open multiple browser pages using the same link and port to connect multiple clients and see how the chat behaves!

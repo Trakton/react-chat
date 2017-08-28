@@ -1,5 +1,6 @@
-import React from 'react'
-import './LoginForm.css'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import './LoginForm.css';
 
 class LoginForm extends React.Component{
   render(){
@@ -13,7 +14,7 @@ class LoginForm extends React.Component{
               placeholder="Username"
               required/>
           </div>
-          <input type="submit" value="Login"/>
+          <Link to={{pathname: '/'}}><input type="submit" value="Login"/></Link>
         </form>
       );
   }

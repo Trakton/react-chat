@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import {Switch, Route} from 'react-router-dom';
 import ChatApp from '../ChatApp/ChatApp';
 import LoginForm from '../LoginForm/LoginForm';
 
@@ -21,15 +22,12 @@ class App extends React.Component {
   }
 
   render() {
-    if(this.state.submitted){
-      return(
-        <ChatApp username={this.state.username}/>
-      );
-    } else {
-      return(
-        <LoginForm usernameChangedHandler={this.usernameChangedHandler} loginHandler={this.loginHandler}/>
-      );
-    }
+    return(
+      <Switch>
+        <Route exact path='/login' render={(props) => (<LoginForm usernameChangedHandler={this.usernameChangedHandler} loginHandler={this.loginHandler}/>)}/>
+        <Route exact path='/' render={(props) => (<ChatApp username={this.state.username}/>)}/>
+      </Switch>
+    );
   }
 }
 

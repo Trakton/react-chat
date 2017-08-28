@@ -27,7 +27,7 @@ This will build a webserver at [localhost:3001](localhost:3001) to serve react f
 
 This project is part of a personal desire to learn new technologies, and apply them in a real application fully functional and online in production mode. Here is a summary of the technologies learned and included in the app:
 
-* [Express](expressjs.com)
+* [Express](https://expressjs.com)
 * [Nodejs](https://nodejs.org)
 * [React](https://facebook.github.io/react/)
 * [React-router](https://github.com/ReactTraining/react-router)

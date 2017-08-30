@@ -1,8 +1,8 @@
-import './App.css';
+import './styles.css';
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ChatApp from '../ChatApp/ChatApp';
-import LoginForm from '../LoginForm/LoginForm';
+import ChatApp from './Chat/index.js';
+import Sign from './Sign/index.js';
 
 class App extends React.Component {
   constructor(props){
@@ -24,7 +24,7 @@ class App extends React.Component {
   render() {
     return(
       <Switch>
-        <Route exact path='/login' render={(props) => (<LoginForm usernameChangedHandler={this.usernameChangedHandler} loginHandler={this.loginHandler}/>)}/>
+        <Route exact path='/login' render={(props) => (<Sign usernameChangedHandler={this.usernameChangedHandler} loginHandler={this.loginHandler}/>)}/>
         <Route exact path='/' render={(props) => (<ChatApp username={this.state.username}/>)}/>
       </Switch>
     );

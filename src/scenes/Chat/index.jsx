@@ -1,7 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
-import Messages from './components/Messages/index.js';
-import ChatInput from './components/Input/index.js';
+import Messages from './components/Messages/index';
+import ChatInput from './components/Input/index';
 import './styles.css';
 
 var server = process.env.NODE_ENV === 'production' ? 'https://luthier-chat-server.herokuapp.com' : 'http://localhost:3000'

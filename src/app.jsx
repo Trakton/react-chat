@@ -1,8 +1,8 @@
 import './styles.css';
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ChatApp from './Chat/index.js';
-import Sign from './Sign/index.js';
+import ChatApp from './scenes/Chat/index';
+import Sign from './scenes/Sign/index';
 
 class App extends React.Component {
   constructor(props){

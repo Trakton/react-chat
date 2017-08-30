@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from './components/Message/index.js';
+import Message from './components/Message/index';
 
 class Messages extends React.Component {
   componentDidUpdate(){

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import * as userActionCreators from '../../../../data/user/actions';
 import './styles.css';
 
@@ -8,6 +9,7 @@ class LoginForm extends React.Component{
   submitHandler = event => {
     event.preventDefault();
     this.props.login(this.input.value);
+    this.props.history.push('/');
   }
   render(){
       return(
@@ -20,7 +22,7 @@ class LoginForm extends React.Component{
               ref={(element) => { this.input = element }}
               required/>
           </div>
-          <Link to="/"><input type="submit" value="Login"/></Link>
+         <input type="submit" value="Login"/>
         </form>
       );
   }
@@ -33,5 +35,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 LoginForm = connect(null, mapDispatchToProps)(LoginForm);
+LoginForm = withRouter(LoginForm);
 
 export default LoginForm;

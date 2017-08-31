@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import Messages from './components/Messages/index';
 import Input from './components/Input/index';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 import * as messagesActionCreators from './data/messages/actions';
 import './styles.css';
 
@@ -14,14 +15,14 @@ class Chat extends React.Component {
     this.checkLogin();
     this.socket = io(server).connect()
     this.socket.on('server:message', message => {
+      message.fromMe = false;
       this.addMessage(message);
     });
   }
 
   checkLogin(){
     if(this.props.username === ' '){
-      //window.location.href = '/login';
-      console.log("+"+this.props.username+"+");      
+      this.props.history.push('/login');      
     }
   }
 
@@ -33,7 +34,6 @@ class Chat extends React.Component {
     this.socket.emit('client:message', message);
     message.fromMe = true;
     this.addMessage(message);
-    console.log("+"+message.username+"+");
   }
 
   addMessage(message){
@@ -56,5 +56,6 @@ const mapStateToProps = state => {
 }
 
 Chat = connect(mapStateToProps)(Chat);
+Chat = withRouter(Chat);
 
 export default Chat;

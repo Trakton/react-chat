@@ -1,8 +1,11 @@
 export const ADD = 'Chat/data/messages/ADD';
 
-export const add = (payload) => (
-    payload.username && payload.content && ({
+export function add(username, content, fromMe){
+    return {
         type: ADD,
-        payload,
-    })
-)
+        username,
+        content,
+        fromMe
+    }
+}
+    

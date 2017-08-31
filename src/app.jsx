@@ -1,7 +1,7 @@
 import './styles.css';
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
-import ChatApp from './scenes/Chat/index';
+import Chat from './scenes/Chat/index';
 import Sign from './scenes/Sign/index';
 
 class App extends React.Component {
@@ -25,7 +25,7 @@ class App extends React.Component {
     return(
       <Switch>
         <Route exact path='/login' render={(props) => (<Sign usernameChangedHandler={this.usernameChangedHandler} loginHandler={this.loginHandler}/>)}/>
-        <Route exact path='/' render={(props) => (<ChatApp username={this.state.username}/>)}/>
+        <Route exact path='/' render={(props) => (<Chat username={this.state.username}/>)}/>
       </Switch>
     );
   }

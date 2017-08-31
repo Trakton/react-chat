@@ -1,19 +1,18 @@
 import React from 'react';
 import io from 'socket.io-client';
-import Messages from './components/Messages/index';
-import ChatInput from './components/Input/index';
+import MessagesContainer from './components/Messages/index';
+import Input from './components/Input/index';
+import { connect } from 'react-redux';
+import * as messagesActionCreators from './data/messages/actions';
 import './styles.css';
 
 var server = process.env.NODE_ENV === 'production' ? 'https://luthier-chat-server.herokuapp.com' : 'http://localhost:3000'
 
-class ChatApp extends React.Component {
+class Chat extends React.Component {
   constructor(props){
     super(props);
     this.checkLogin();
-    this.state = { messages: [] };
     this.socket = io(server).connect()
-    this.sendHandler = this.sendHandler.bind(this);
-    this.addMessage = this.addMessage.bind(this);
     this.socket.on('server:message', message => {
       this.addMessage(message);
     });
@@ -24,32 +23,30 @@ class ChatApp extends React.Component {
       window.location.href = '/login';
   }
 
-  sendHandler(message){
-    const messageObject = {
+  sendHandler = content => {
+    const message = {
       username: this.props.username,
-      message
+      content
     };
-
-    this.socket.emit('client:message', messageObject);
-    messageObject.fromMe = true;
-    this.addMessage(messageObject);
+    this.socket.emit('client:message', message);
+    message.fromMe = true;
+    this.addMessage(message);
   }
 
   addMessage(message){
-    const messages = this.state.messages;
-    messages.push(message);
-    this.setState({ messages });
+    this.props.dispatch(messagesActionCreators.add(message.username, message.content, message.fromMe));
   }
 
   render() {
     return(
       <div className="container">
         <h3>React Messenger</h3>
-        <Messages messages={this.state.messages}/>
-        <ChatInput onSend={this.sendHandler}/>
+        <MessagesContainer />
+        <Input onSend={this.sendHandler}/>
       </div>
     );
   }
 }
 
-export default ChatApp;
+Chat = connect()(Chat);
+export default Chat;

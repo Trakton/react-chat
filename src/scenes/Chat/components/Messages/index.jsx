@@ -1,5 +1,7 @@
 import React from 'react';
 import Message from './components/Message/index';
+import { connect } from 'react-redux';
+import { add } from '../../data/messages/actions';
 
 class Messages extends React.Component {
   componentDidUpdate(){
@@ -13,7 +15,7 @@ class Messages extends React.Component {
         <Message
           key={i}
           username={message.username}
-          message={message.message}
+          content={message.content}
           fromMe={message.fromMe}/>
       );
     });
@@ -25,4 +27,12 @@ class Messages extends React.Component {
   }
 }
 
-export default Messages;
+const mapStateToProps = state => {
+  return { messages: state.chat.data.messages };
+}
+
+const MessagesContainer = connect(
+  mapStateToProps
+)(Messages);
+
+export default MessagesContainer;

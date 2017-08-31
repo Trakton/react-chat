@@ -1,18 +1,16 @@
 import React from 'react';
 
-class ChatInput extends React.Component {
+class Input extends React.Component {
   constructor(props){
     super(props);
     this.state = { chatInput: ''};
-    this.submitHandler = this.submitHandler.bind(this);
-    this.typingHandler = this.typingHandler.bind(this);
   }
 
-  typingHandler(event){
+  typingHandler = event => {
     this.setState({ chatInput: event.target.value });
   }
 
-  submitHandler(event){
+  submitHandler = event => {
     event.preventDefault();
     this.props.onSend(this.state.chatInput);
     this.setState({ chatInput: ' ' });
@@ -32,4 +30,4 @@ class ChatInput extends React.Component {
   }
 }
 
-export default ChatInput;
+export default Input;

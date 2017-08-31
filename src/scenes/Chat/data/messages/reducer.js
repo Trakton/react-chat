@@ -1,11 +1,9 @@
 import { ADD } from './actions';
 
-const initialState = [];
-
-export const reducer = (state = initialState, action) => {
+export const reducer = (state = [], action) => {
     switch(action.type){
         case ADD:
-            return [...state, action.payload];
+            return [...state, { username: action.username, content: action.content, fromMe: action.fromMe} ];
         default:
             return state;
     }

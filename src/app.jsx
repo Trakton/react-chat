@@ -8,8 +8,8 @@ class App extends React.Component {
   render() {
     return(
       <Switch>
-        <Route exact path='/login' render={(props) => (<Sign history={props.history}/>)}/>
-        <Route exact path='/' render={(props) => (<Chat />)}/>
+        <Route exact path='/login' component={Sign}/>
+        <Route exact path='/' component={Chat}/>
       </Switch>
     );
   }

@@ -10,13 +10,13 @@ import registerServiceWorker from './services/registerServiceWorker';
 ReactDOM.render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
-            <Route  render={(props) => (<App />)}/>
+            <Route component={App}/>
         </ConnectedRouter>
     </Provider>, 
     document.getElementById('root')
 );
 
-let unsubscribe = store.subscribe(() =>
+store.subscribe(() =>
   console.log(store.getState())
 )
 

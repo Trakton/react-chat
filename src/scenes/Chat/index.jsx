@@ -10,8 +10,7 @@ import './styles.css';
 var server = process.env.NODE_ENV === 'production' ? 'https://luthier-chat-server.herokuapp.com' : 'http://localhost:3000'
 
 class Chat extends React.Component {
-  constructor(props){
-    super(props);
+  componentWillMount(){
     this.checkLogin();
     this.socket = io(server).connect()
     this.socket.on('server:message', message => {

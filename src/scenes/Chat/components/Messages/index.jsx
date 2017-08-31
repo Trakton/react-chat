@@ -1,7 +1,6 @@
 import React from 'react';
 import Message from './components/Message/index';
 import { connect } from 'react-redux';
-import { add } from '../../data/messages/actions';
 
 class Messages extends React.Component {
   componentDidUpdate(){

@@ -1,6 +1,6 @@
 import React from 'react';
 import io from 'socket.io-client';
-import MessagesContainer from './components/Messages/index';
+import Messages from './components/Messages/index';
 import Input from './components/Input/index';
 import { connect } from 'react-redux';
 import * as messagesActionCreators from './data/messages/actions';
@@ -19,8 +19,10 @@ class Chat extends React.Component {
   }
 
   checkLogin(){
-    if(this.props.username === ' ')
-      window.location.href = '/login';
+    if(this.props.username === ' '){
+      //window.location.href = '/login';
+      console.log("+"+this.props.username+"+");      
+    }
   }
 
   sendHandler = content => {
@@ -31,6 +33,7 @@ class Chat extends React.Component {
     this.socket.emit('client:message', message);
     message.fromMe = true;
     this.addMessage(message);
+    console.log("+"+message.username+"+");
   }
 
   addMessage(message){
@@ -41,12 +44,17 @@ class Chat extends React.Component {
     return(
       <div className="container">
         <h3>React Messenger</h3>
-        <MessagesContainer />
+        <Messages />
         <Input onSend={this.sendHandler}/>
       </div>
     );
   }
 }
 
-Chat = connect()(Chat);
+const mapStateToProps = state => {
+  return { username: state.data.user.name };
+}
+
+Chat = connect(mapStateToProps)(Chat);
+
 export default Chat;

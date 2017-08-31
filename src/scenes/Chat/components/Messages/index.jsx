@@ -31,8 +31,6 @@ const mapStateToProps = state => {
   return { messages: state.chat.data.messages };
 }
 
-const MessagesContainer = connect(
-  mapStateToProps
-)(Messages);
+Messages = connect(mapStateToProps)(Messages);
 
-export default MessagesContainer;
+export default Messages;

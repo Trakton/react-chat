@@ -1,20 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
-import { BrowserRouter } from 'react-router-dom';
+import  ConnectedRouter  from 'react-router-redux/ConnectedRouter'
 import { Provider } from 'react-redux';
-import store from './store';
+import store, {history} from './store';
 import registerServiceWorker from './services/registerServiceWorker';
 
 ReactDOM.render(
-    <BrowserRouter>
-       <Provider store={store}>
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
             <App />
-        </Provider>
-    </BrowserRouter>, 
+        </ConnectedRouter>
+    </Provider>, 
     document.getElementById('root')
 );
 
 console.log(store.getState());
+
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+)
 
 registerServiceWorker();
